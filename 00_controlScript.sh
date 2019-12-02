@@ -22,30 +22,38 @@ LOGS=$OUT/logs/
 mkdir -p $LOGS
 
 
-# install UDPipe, download 2.4 models, install Language Tool
-# wget from https://lindat.mff.cuni.cz/repository/xmlui/bitstream/handle/11234/1-2998/udpipe-ud-2.4-190531.zip?sequence=2&isAllowed=y ?
-# then unpack CZ DE IT
-#ud.cz <- udpipe_load_model(paste0(udpath, 'czech-pdt-ud-2.4-190531.udpipe'))
-#ud.de <- udpipe_load_model(paste0(udpath, 'german-gsd-ud-2.4-190531.udpipe'))
-#ud.it <- udpipe_load_model(paste0(udpath, 'italian-isdt-ud-2.4-190531.udpipe'))
-# or udpipe_download_model() in R?
-UDPIPE=
+# install UDPipe, download 2.0 models
+UDPIPE=udpipe/
+mkdir $UDPIPE
+cd $UDPIPE
+# download 2.0 archive
+wget https://lindat.mff.cuni.cz/repository/xmlui/bitstream/handle/11234/1-2364/udpipe-ud-2.0-170801.zip
+unzip udpipe-ud-2.0-170801.zip
+mv udpipe-ud-2.0-170801/czech-ud-2.0-170801.udpipe .  # CZ model
+mv udpipe-ud-2.0-170801/german-ud-2.0-170801.udpipe .  # DE model
+mv udpipe-ud-2.0-170801/italian-ud-2.0-170801.udpipe .  # IT model
+# clean up
+rm udpipe-ud-2.0-170801.zip
+rm -r udpipe-ud-2.0-170801/
 
+
+# install Language Tool
 # see https://github.com/languagetool-org/languagetool
-# is it this? 
-# curl -L https://raw.githubusercontent.com/languagetool-org/languagetool/master/install.sh | sudo bash <options>
-LANGTOOL=
+LANGTOOL=langtool/
+curl -L https://raw.githubusercontent.com/languagetool-org/languagetool/master/install.sh | bash
+mv LanguageTool-4.7-stable/ $LANGTOOL
 
 # R install pacman
+R -e "install.packages('pacman', repos='https://cloud.r-project.org')"
+
+
+# REPROLANG 2020
 
 # and run corpus prep with io argvars
 python3 01_corpusCollation.py $MERLIN $TEXTS
 
 # feature extraction
 Rscript 02_featureExtraction.R $UDPIPE $LANGTOOL $TEXTS $OUT
-# e.g.
-udpath <- '~/workspace/nlp-tools/udpipe/'
-langtoolpath <- '~/workspace/nlp-tools/LanguageTool-4.7-stable'
 
 # experiments
 Rscript 03_classificationExperiments_parallel_crossling.R $OUT
