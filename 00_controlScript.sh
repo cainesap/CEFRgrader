@@ -20,6 +20,7 @@ mkdir -p $TEXTS
 OUT=output/datasets/
 LOGS=$OUT/logs/
 mkdir -p $LOGS
+TABLES=output/tables_and_plots/
 
 
 # install UDPipe, download 2.0 models
@@ -61,5 +62,4 @@ Rscript 03_classificationExperiments_parallel_monoling.R $OUT
 Rscript 03_classificationExperiments_parallel_multiling.R $OUT
 
 # print results
-Rscript 04_resultsSummary.R $LOGS
-
+Rscript 04_resultsSummary.R $LOGS $TABLES
