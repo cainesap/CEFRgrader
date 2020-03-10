@@ -8,7 +8,7 @@ This repository relates to the [REPROLANG 2020 shared task](https://lrec2020.lre
 
 To refer to this new piece of work please cite:
 
-Andrew Caines & Paula Buttery, 2020. REPROLANG 2020: Automatic Proficiency Scoring of Czech, English, German, Italian, and Spanish learner essays. In Proceedings of REPROLANG.
+Andrew Caines & Paula Buttery, 2020. REPROLANG 2020: Automatic Proficiency Scoring of Czech, English, German, Italian, and Spanish learner essays. In Proceedings of REPROLANG, co-located with LREC.
 
 ----
 
