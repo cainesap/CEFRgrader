@@ -6,6 +6,10 @@ This repository relates to the [REPROLANG 2020 shared task](https://lrec2020.lre
 
 [Sowmya Vajjala & Taraka Rama, 2018. Experiments with Universal CEFR classifications. In Proceedings of BEA](https://www.aclweb.org/anthology/W18-0515). (V&R)
 
+To refer to this new piece of work please cite:
+
+Andrew Caines & Paula Buttery, 2020. REPROLANG 2020: Automatic Proficiency Scoring of Czech, English, German, Italian, and Spanish learner essays. In Proceedings of REPROLANG.
+
 ----
 
 ### REPROLANG 2020 Task D.2
@@ -40,4 +44,4 @@ Here I list the steps to get from corpus download to end results. Any errors are
 12. run `Rscript 04_resultsSummary.R` to print a summary of results based on experiment logs
 
 
-_Andrew Caines, December 2019_
+_Andrew Caines, March 2020_
